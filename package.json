@@ -1,0 +1,39 @@
+{
+  "name": "TreTrafficBackend",
+  "version": "1.0.0",
+  "description": "TreTrafficBackend",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm run test",
+    "server": "node server/app.js",
+    "server:watch": "nodemon server/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ottoo/TreTrafficBackend.git"
+  },
+  "keywords": [
+    "hapijs",
+    "angular"
+  ],
+  "author": "Otto Kivikarki",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ottoo/TreTrafficBackend/issues"
+  },
+  "devDependencies": {},
+  "homepage": "https://github.com/ottoo/TreTrafficBackend#readme",
+  "dependencies": {
+    "good": "6.4.0",
+    "good-console": "5.1.0",
+    "h2o2": "^5.0.0",
+    "hapi": "11.0.2",
+    "hapi-auth-jwt2": "^5.2.0",
+    "hapi-mongodb": "3.1.0",
+    "inert": "3.2.0",
+    "jsonwebtoken": "^5.4.1",
+    "lodash": "^3.10.1",
+    "qs": "^6.0.1",
+    "wreck": "^7.0.0"
+  }
+}
