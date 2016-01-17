@@ -5,7 +5,7 @@ var API_URL = 'http://data.itsfactory.fi/journeys/api/1/vehicle-activity';
 
 module.exports = [{
     method: 'GET',
-    path: '/lines',
+    path: '/api/lines',
     handler: {
       proxy: {
         mapUri: function(request, callback) {
