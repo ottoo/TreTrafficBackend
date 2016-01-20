@@ -1,5 +1,6 @@
 'use strict';
 
+var Path = require('path');
 var Hapi = require('hapi');
 var HapiJwt2 = require('hapi-auth-jwt2');
 var Inert = require('inert');
@@ -10,7 +11,16 @@ var _ = require('lodash');
 var routes = require('./routes');
 
 // Create server instance
-var server = new Hapi.Server();
+var server = new Hapi.Server({
+    connections: {
+        routes: {
+            files: {
+                relativeTo: Path.join(__dirname, 'data')
+            }
+        }
+    }
+});
+
 server.connection({
     port: 3333
 });

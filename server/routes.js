@@ -5,6 +5,13 @@ var API_URL = 'http://data.itsfactory.fi/journeys/api/1/vehicle-activity';
 
 module.exports = [{
     method: 'GET',
+    path: '/mocks',
+    handler: function(request, reply) {
+      return reply.file('mockvehicles.json')
+                  .header('Access-Control-Allow-Origin', '*');
+    }
+  },{
+    method: 'GET',
     path: '/api/lines',
     handler: {
       proxy: {
@@ -21,7 +28,7 @@ module.exports = [{
           Wreck.read(res, {
             json: true
           }, function(err, payload) {
-            reply(payload);
+            reply(payload).header('Access-Control-Allow-Origin', '*');
           });
         }
       }
