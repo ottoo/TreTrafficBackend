@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "npm run test",
-    "server": "node server/app.js",
-    "server:watch": "nodemon server/app.js"
+    "server": "node server/server.js",
+    "server:watch": "nodemon server/server.js"
   },
   "repository": {
     "type": "git",
@@ -24,17 +24,13 @@
   "devDependencies": {},
   "homepage": "https://github.com/ottoo/TreTrafficBackend#readme",
   "dependencies": {
-    "good": "6.4.0",
-    "good-console": "5.1.0",
-    "h2o2": "^5.0.0",
-    "hapi": "11.0.2",
-    "hapi-auth-jwt2": "^5.2.0",
-    "hapi-cors-headers": "^1.0.0",
-    "hapi-mongodb": "3.1.0",
-    "inert": "3.2.0",
-    "jsonwebtoken": "^5.4.1",
-    "lodash": "^3.10.1",
-    "qs": "^6.0.1",
-    "wreck": "^7.0.0"
+    "good": "^7.0.0",
+    "good-console": "^6.1.1",
+    "good-squeeze": "^3.0.1",
+    "h2o2": "^5.1.0",
+    "hapi": "^13.4.0",
+    "inert": "^4.0.0",
+    "lodash": "^4.12.0",
+    "wreck": "^7.2.1"
   }
 }
