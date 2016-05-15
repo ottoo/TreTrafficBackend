@@ -1,5 +1,8 @@
 # Tampere bus traffic backend proxy
 
+[![Dependency Status](https://david-dm.org/ottoo/TreTrafficBackend/status.svg)](https://david-dm.org/ottoo/TreTrafficBackend#info=dependencies) [![devDependency Status](https://david-dm.org/ottoo/TreTrafficBackend/dev-status.svg)](https://david-dm.org/ottoo/TreTrafficBackend#info=devDependencies)
+
+
 A small backend proxy for providing Tampere (Finland) area bus traffic. Currently
 only provider information about the bus lines.
 
