@@ -1,6 +1,7 @@
 'use strict';
 
 var Wreck = require('wreck');
+var processVehicleData = require('./common.js').processVehicleData;
 var API_URL = 'http://data.itsfactory.fi/journeys/api/1/vehicle-activity';
 
 module.exports = [{
@@ -18,7 +19,7 @@ module.exports = [{
             Wreck.read(res, {
                 json: true
             }, function(err, payload) {
-                reply(payload).header('Access-Control-Allow-Origin', '*');
+                reply(processVehicleData(payload)).header('Access-Control-Allow-Origin', '*');
             });
         };
 
