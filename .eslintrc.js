@@ -3,7 +3,7 @@
 module.exports = {
   root: true,
   parserOptions: {
-    ecmaVersion: 6,
+    ecmaVersion: 8,
     sourceType: 'module'
   },
   env: {
@@ -21,7 +21,8 @@ module.exports = {
     'no-console': 'off',
     'no-shadow': 'off',
     'quote-props': 'off',
-    'class-methods-use-this': 'off'
+    'class-methods-use-this': 'off',
+    'no-process-exit': 'off'
   },
   globals: {
     io: false

@@ -7,32 +7,20 @@ module.exports = [
   {
     method: 'GET',
     path: '/api/mocks',
-    handler(request, reply) {
-      return reply.file('mockvehicles.json').header('Access-Control-Allow-Origin', '*');
+    handler: async (_, h) => {
+      return h.file('mockvehicles.json');
     }
   },
   {
     method: 'GET',
     path: '/api/lines',
-    handler(request, reply) {
-      const callback = (err, res) => {
-        Wreck.read(
-          res,
-          {
-            json: true
-          },
-          (err, payload) => {
-            reply(processVehicleData(payload)).header('Access-Control-Allow-Origin', '*');
-          }
-        );
-      };
+    handler: async request => {
+      const lines = request.query.lineRefs;
+      const readResponse = async response => processVehicleData(await Wreck.read(response, { json: true }));
+      const apiUrl = lines ? `${API_URL}?lineRef=${lines}` : API_URL;
 
-      if (request.query.lineRefs) {
-        const lines = request.query.lineRefs;
-        Wreck.request('GET', `${API_URL}?lineRef=${lines}`, null, callback);
-      } else {
-        Wreck.request('GET', API_URL, null, callback);
-      }
+      const response = await Wreck.request('GET', apiUrl);
+      return readResponse(response);
     }
   }
 ];

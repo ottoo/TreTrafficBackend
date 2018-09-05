@@ -8,28 +8,21 @@ const routes = require('./routes');
 
 // Create server instance
 const server = new Hapi.Server({
-  connections: {
-    routes: {
-      files: {
-        relativeTo: Path.join(__dirname, 'data')
-      }
+  host: 'localhost',
+  port: 3333,
+  routes: {
+    files: {
+      relativeTo: Path.join(__dirname, 'data')
     }
   }
 });
 
-server.connection({
-  port: 3333
-});
-
-// Register plugins, routes and start the server
-server.register(
-  [
+const init = async () => {
+  // Register plugins, routes and start the server
+  await server.register([
     {
-      register: Good,
+      plugin: Good,
       options: {
-        ops: {
-          interval: 1000
-        },
         reporters: {
           console: [
             {
@@ -51,23 +44,22 @@ server.register(
       }
     },
     {
-      register: Inert,
-      options: {}
+      plugin: Inert
     },
     {
-      register: H2O2,
-      options: {}
+      plugin: H2O2
     }
-  ],
-  err => {
-    if (err) {
-      throw err;
-    }
+  ]);
 
-    server.route(routes);
+  server.route(routes);
 
-    server.start(() => {
-      server.log('info', `Server running at: ${server.info.uri}`);
-    });
-  }
-);
+  await server.start();
+  server.log('info', `Server running at: ${server.info.uri}`);
+};
+
+process.on('unhandledRejection', err => {
+  console.log(err);
+  process.exit(1);
+});
+
+init();
