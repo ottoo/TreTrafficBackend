@@ -8,7 +8,7 @@ const routes = require('./routes');
 
 // Create server instance
 const server = new Hapi.Server({
-  host: 'localhost',
+  host: '0.0.0.0',
   port: 3333,
   routes: {
     files: {
