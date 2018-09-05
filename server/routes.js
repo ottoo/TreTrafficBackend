@@ -1,33 +1,38 @@
-'use strict';
+const Wreck = require('wreck');
+const { processVehicleData } = require('./common.js');
 
-var Wreck = require('wreck');
-var processVehicleData = require('./common.js').processVehicleData;
-var API_URL = 'http://data.itsfactory.fi/journeys/api/1/vehicle-activity';
+const API_URL = 'http://data.itsfactory.fi/journeys/api/1/vehicle-activity';
 
-module.exports = [{
+module.exports = [
+  {
     method: 'GET',
     path: '/api/mocks',
-    handler: function(request, reply) {
-        return reply.file('mockvehicles.json')
-            .header('Access-Control-Allow-Origin', '*');
+    handler(request, reply) {
+      return reply.file('mockvehicles.json').header('Access-Control-Allow-Origin', '*');
     }
-}, {
+  },
+  {
     method: 'GET',
     path: '/api/lines',
-    handler: function(request, reply) {
-        var callback = function(err, res) {
-            Wreck.read(res, {
-                json: true
-            }, function(err, payload) {
-                reply(processVehicleData(payload)).header('Access-Control-Allow-Origin', '*');
-            });
-        };
+    handler(request, reply) {
+      const callback = (err, res) => {
+        Wreck.read(
+          res,
+          {
+            json: true
+          },
+          (err, payload) => {
+            reply(processVehicleData(payload)).header('Access-Control-Allow-Origin', '*');
+          }
+        );
+      };
 
-        if (request.query.filter) {
-            var lines = request.query.filter;
-            Wreck.request('GET', API_URL + '?lineRef=' + lines, null, callback);
-        } else {
-            Wreck.request('GET', API_URL, null, callback);
-        }
+      if (request.query.lineRefs) {
+        const lines = request.query.lineRefs;
+        Wreck.request('GET', `${API_URL}?lineRef=${lines}`, null, callback);
+      } else {
+        Wreck.request('GET', API_URL, null, callback);
+      }
     }
-}];
+  }
+];

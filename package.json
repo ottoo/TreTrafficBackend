@@ -1,12 +1,13 @@
 {
-  "name": "TreTrafficBackend",
+  "name": "tretraffic-backend",
   "version": "1.0.0",
-  "description": "TreTrafficBackend",
+  "description": "Tampere bus traffic backend proxy server",
   "main": "app.js",
   "scripts": {
     "test": "npm run test",
     "server": "node server/server.js",
-    "server:watch": "nodemon server/server.js"
+    "server:watch": "nodemon server/server.js",
+    "lint:fix": "eslint server/**/*.js --fix"
   },
   "repository": {
     "type": "git",
@@ -14,14 +15,23 @@
   },
   "keywords": [
     "hapijs",
-    "angular"
+    "node",
+    "nodejs"
   ],
   "author": "Otto Kivikarki",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ottoo/TreTrafficBackend/issues"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "5.5.0",
+    "eslint-config-airbnb-base": "13.1.0",
+    "eslint-config-prettier": "3.0.1",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-node": "7.0.1",
+    "eslint-plugin-prettier": "2.6.2",
+    "prettier": "1.14.2"
+  },
   "homepage": "https://github.com/ottoo/TreTrafficBackend#readme",
   "dependencies": {
     "good": "7.2.0",

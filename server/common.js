@@ -1,14 +1,5 @@
-'use strict';
-
-var _ = require('lodash');
+const processVehicleData = payload => payload.body.map(val => val.monitoredVehicleJourney);
 
 module.exports = {
-    processVehicleData: processVehicleData
+  processVehicleData
 };
-
-function processVehicleData(payload) {
-    let vehicleData = _.map(payload.body, (val) => {
-        return val.monitoredVehicleJourney;
-    });
-    return vehicleData;
-}
