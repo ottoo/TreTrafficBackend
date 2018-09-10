@@ -1,0 +1,12 @@
+version: '2'
+services:
+    tileserver:
+        image: klokantech/tileserver-gl
+        ports:
+            - "8080:80"
+        volumes:
+            - ../tiles/2017-07-03_europe_finland.mbtiles:/data/2017-07-03_europe_finland.mbtiles
+    app:
+        image: tretraffic:latest
+        ports:
+            - "3333:3333"

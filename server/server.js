@@ -9,7 +9,7 @@ const routes = require('./routes');
 // Create server instance
 const server = new Hapi.Server({
   host: '0.0.0.0',
-  port: 3333,
+  port: process.env.PORT || 3333,
   routes: {
     files: {
       relativeTo: Path.join(__dirname, 'data')

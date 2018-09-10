@@ -1,10 +1,18 @@
-# Tampere bus traffic backend proxy
+# Tampere bus traffic backend
 
 [![Dependency Status](https://david-dm.org/ottoo/TreTrafficBackend/status.svg)](https://david-dm.org/ottoo/TreTrafficBackend#info=dependencies) [![devDependency Status](https://david-dm.org/ottoo/TreTrafficBackend/dev-status.svg)](https://david-dm.org/ottoo/TreTrafficBackend#info=devDependencies)
 
 
-A small backend proxy for providing Tampere (Finland) area bus traffic. Currently
-only provider information about the bus lines.
+A small backend proxy for providing Tampere (Finland) area bus traffic.
+
+### Hosting OpenStreetMap Vector Tiles
+
+This application hosts its own OpenStreetMap tiles and uses them to display the map via mapbox-gl
+library. Due to the size of the tiles, they are not included in the repository, but can be downloaded
+from [https://openmaptiles.com/downloads/planet/](https://openmaptiles.com/downloads/planet/).
+
+The tileserver GUI can be accessed on `http://localhost:8080` after running docker-compose up in `/docker`
+folder.
 
 
 > HapiJS
