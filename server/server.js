@@ -11,6 +11,9 @@ const server = new Hapi.Server({
   host: '0.0.0.0',
   port: process.env.PORT || 3333,
   routes: {
+    cors: {
+      origin: ['http://localhost:3000']
+    },
     files: {
       relativeTo: Path.join(__dirname, 'data')
     }
